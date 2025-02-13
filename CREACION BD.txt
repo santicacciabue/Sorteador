@@ -1,0 +1,75 @@
+CREATE TABLE AUT_SORTEO(
+    id int PRIMARY KEY AUTO_INCREMENT,
+    fecha DATETIME,
+    confirmado BOOLEAN,
+    dia_descriptivo VARCHAR(255),
+    aut_rel_producto_id int,
+    Foreign Key (aut_rel_producto_id) REFERENCES AUT_REL_PRODUCTO(id)
+)
+
+CREATE TABLE AUT_REL_PRODUCTO(
+    id int PRIMARY KEY AUTO_INCREMENT,
+    nombre VARCHAR(255),
+    orden INT,
+    aut_categorias_id int,
+    Foreign Key (aut_categorias_id) REFERENCES AUT_CATEGORIA(id)
+)
+
+CREATE TABLE AUT_CATEGORIA(
+    id int PRIMARY KEY AUTO_INCREMENT,
+    nombre VARCHAR(255),
+    ultima_asignacion_semana int,
+    ultima_asignacion_fecha DATE,
+    semanas_a_planificar int
+)
+
+CREATE TABLE AUT_CATEGORIA_TOPE(
+    id int PRIMARY KEY AUTO_INCREMENT,
+    cantidad_min int,
+    cantidad_max int,
+    es_autoridad BOOLEAN,
+    aut_categoria_id int,
+    Foreign Key (aut_categoria_id) REFERENCES AUT_CATEGORIA(id)
+)
+
+CREATE TABLE AUT_GRUPO(
+    id int PRIMARY KEY AUTO_INCREMENT,
+    nombre VARCHAR(255),
+    orden_grupo int,
+    aut_categoria_id int,
+    Foreign Key (aut_categoria_id) REFERENCES AUT_CATEGORIA(id) 
+)
+
+CREATE TABLE AUT_INTEGRANTE(
+    id int PRIMARY KEY AUTO_INCREMENT,
+    nombre VARCHAR(255),
+    legajo int,
+    rol ENUM("autoridad","auxiliar","coordinador"),
+    aut_grupo_id int,
+    Foreign Key (aut_grupo_id) REFERENCES AUT_GRUPO(id)
+)
+
+CREATE TABLE AUT_ASIGNACION(
+    id int PRIMARY KEY AUTO_INCREMENT,
+    estado BOOLEAN,
+    aut_grupo_id int,
+    aut_sorteo_id int,
+    Foreign Key (aut_grupo_id) REFERENCES AUT_GRUPO(id),
+    Foreign Key (aut_sorteo_id) REFERENCES AUT_SORTEO(id)
+)
+
+CREATE TABLE AUT_SOLICITUD_REEMPLAZO(
+    id int PRIMARY KEY AUTO_INCREMENT,
+    nombre VARCHAR(255),
+    descripcion VARCHAR(255),
+    fecha_solicitud DATE,
+    sol_estado ENUM("pendiente","aprobada","cancelada"),
+    aut_empleado_solicitante int,
+    aut_empleado_reemplazo int,
+    aut_asignacion_solicitante int,
+    aut_asignacion_reemplazo int,
+    Foreign Key (aut_empleado_solicitante) REFERENCES AUT_INTEGRANTE(id),
+    Foreign Key (aut_empleado_reemplazo) REFERENCES AUT_INTEGRANTE(id),
+    Foreign Key (aut_asignacion_solicitante) REFERENCES AUT_ASIGNACION(id),
+    Foreign Key (aut_asignacion_reemplazo) REFERENCES AUT_ASIGNACION(id)
+)
