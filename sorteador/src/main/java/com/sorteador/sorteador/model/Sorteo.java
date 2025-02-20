@@ -54,11 +54,10 @@ public class Sorteo {
         this.dia_descriptivo = dia_descriptivo;
     }
 
-    @OneToMany
+    @ManyToOne
     @JoinColumn(name = "aut_rel_producto_id")
     private Rel_producto aut_rel_producto_id;
 
-    @ManyToOne
-    @JoinColumn(name = "aut_sorteo_id",referencedColumnName = "id")
+    @OneToMany(mappedBy = "aut_sorteo_id")
     private Sorteo sorteo;
 }

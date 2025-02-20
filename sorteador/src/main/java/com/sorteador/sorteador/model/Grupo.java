@@ -40,11 +40,10 @@ public class Grupo {
         this.orden_grupo = orden_grupo;
     }
 
-    @OneToMany
+    @ManyToOne
     @JoinColumn(name = "aut_categoria_id")
     private Categoria aut_categoria_id;
 
-    @ManyToOne
-    @JoinColumn(name = "aut_grupo_id", referencedColumnName = "id")
+    @OneToMany(mappedBy = "aut_grupo_id")
     private Grupo grupo;
 }

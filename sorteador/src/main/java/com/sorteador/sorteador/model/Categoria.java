@@ -5,8 +5,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import java.time.LocalDate;
 
@@ -62,7 +61,6 @@ public class Categoria {
         this.semanas_a_planificar = semanas_a_planificar;
     }
     
-    @ManyToOne
-    @JoinColumn(name = "aut_categoria_id", referencedColumnName = "id")
+    @OneToMany(mappedBy = "aut_categoria_id")
     private Categoria categoria;
 }

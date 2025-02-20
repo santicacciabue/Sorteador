@@ -40,12 +40,11 @@ public class Rel_producto {
         this.orden = orden;
     }
 
-    @OneToMany
+    @ManyToOne
     @JoinColumn(name = "aut_categoria_id")
     private Categoria aut_categoria_id;
 
-    @ManyToOne
-    @JoinColumn(name = "aut_rel_producto_id", referencedColumnName = "id")
+    @OneToMany(mappedBy = "aut_rel_producto_id")
     private Rel_producto rel_producto;
     
 }

@@ -52,12 +52,11 @@ public class Integrante {
         this.rol = rol;
     }
 
-    @OneToMany
+    @ManyToOne
     @JoinColumn(name = "aut_grupo_id")
     private Grupo aut_grupo_id;
 
-    @ManyToOne
-    @JoinColumn(name = "aut_integrante_id", referencedColumnName = "id")
+    @OneToMany(mappedBy = "aut_integrante_id")
     private Integrante integrante;
 
     

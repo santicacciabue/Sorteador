@@ -8,7 +8,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
-import jakarta.persistence.OneToMany;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
 @Entity
@@ -65,19 +65,19 @@ public class Solicitud_reemplazo {
 		this.sol_estado = sol_estado;
 	}
 
-    @OneToMany
+    @ManyToOne
     @JoinColumn(name = "aut_integrante_id")
     private Integrante aut_integrante_solicitante_id;
 
-    @OneToMany
+    @ManyToOne
     @JoinColumn(name = "aut_integrante_id")
     private Integrante aut_integrante_reemplazo_id;
 
-    @OneToMany
+    @ManyToOne
     @JoinColumn(name = "aut_asignacion_id")
     private Asignacion aut_asignacion_solicitante_id;
 
-    @OneToMany
+    @ManyToOne
     @JoinColumn(name = "aut_asignacion_id")
     private Asignacion aut_asignacion_reemplazo_id;
 

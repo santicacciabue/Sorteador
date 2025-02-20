@@ -29,15 +29,14 @@ public class Asignacion {
         this.estado = estado;
     }
 
-    @OneToMany
+    @ManyToOne
     @JoinColumn(name = "aut_grupo_id")
     private Grupo aut_grupo_id;
 
-    @OneToMany
+    @ManyToOne
     @JoinColumn(name = "aut_sorteo_id")
     private Sorteo aut_sorteo_id;
 
-    @ManyToOne
-    @JoinColumn(name = "aut_asignacion_id", referencedColumnName = "id")
+    @OneToMany(mappedBy = "aut_asignacion_id")
     private Asignacion asignacion;
 }
