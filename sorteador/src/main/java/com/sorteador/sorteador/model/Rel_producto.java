@@ -21,8 +21,24 @@ public class Rel_producto {
     @Column (name = "nombre")
     private String nombre;
 
+    public String getNombre() {
+        return this.nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
     @Column (name = "orden")
     private int orden;
+
+    public int getOrden() {
+        return this.orden;
+    }
+
+    public void setOrden(int orden) {
+        this.orden = orden;
+    }
 
     @OneToMany
     @JoinColumn(name = "aut_categoria_id")

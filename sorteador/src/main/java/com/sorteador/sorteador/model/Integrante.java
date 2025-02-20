@@ -22,11 +22,35 @@ public class Integrante {
     @Column(name = "nombre")
     private String nombre;
 
+    public String getNombre() {
+        return this.nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
     @Column(name = "legajo")
     private int legajo;
 
+    public int getLegajo() {
+        return this.legajo;
+    }
+
+    public void setLegajo(int legajo) {
+        this.legajo = legajo;
+    }
+
     @Column(name = "rol") // ENUM
     private String rol;
+
+    public String getRol() {
+        return this.rol;
+    }
+
+    public void setRol(String rol) {
+        this.rol = rol;
+    }
 
     @OneToMany
     @JoinColumn(name = "aut_grupo_id")

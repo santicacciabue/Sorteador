@@ -21,8 +21,24 @@ public class Grupo {
     @Column(name = "nombre")
     private String nombre;
 
+    public String getNombre() {
+        return this.nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
     @Column(name = "orden_grupo")
     private int orden_grupo;
+
+    public int getOrden_grupo() {
+        return this.orden_grupo;
+    }
+
+    public void setOrden_grupo(int orden_grupo) {
+        this.orden_grupo = orden_grupo;
+    }
 
     @OneToMany
     @JoinColumn(name = "aut_categoria_id")

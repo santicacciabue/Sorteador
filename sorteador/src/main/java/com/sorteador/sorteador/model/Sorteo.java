@@ -24,11 +24,35 @@ public class Sorteo {
     @Column(name = "fecha")
     private LocalDate fecha;
 
+    public LocalDate getFecha() {
+        return this.fecha;
+    }
+
+    public void setFecha(LocalDate fecha) {
+        this.fecha = fecha;
+    }
+
     @Column(name = "confirmado")
     private boolean confirmado;
 
+    public boolean isConfirmado() {
+        return this.confirmado;
+    }
+
+    public void setConfirmado(boolean confirmado) {
+        this.confirmado = confirmado;
+    }
+
     @Column(name = "dia_descriptivo")
     private String dia_descriptivo;
+
+    public String getDia_descriptivo() {
+        return this.dia_descriptivo;
+    }
+
+    public void setDia_descriptivo(String dia_descriptivo) {
+        this.dia_descriptivo = dia_descriptivo;
+    }
 
     @OneToMany
     @JoinColumn(name = "aut_rel_producto_id")

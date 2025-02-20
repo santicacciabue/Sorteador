@@ -21,6 +21,14 @@ public class Asignacion {
     @Column(name = "estado")
     private boolean estado;
 
+    public boolean getEstado() {
+        return this.estado;
+    }
+
+    public void setEstado(boolean estado) {
+        this.estado = estado;
+    }
+
     @OneToMany
     @JoinColumn(name = "aut_grupo_id")
     private Grupo aut_grupo_id;
