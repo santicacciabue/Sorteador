@@ -1,5 +1,7 @@
 package com.sorteador.sorteador.model;
 
+import java.util.List;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -38,5 +40,5 @@ public class Asignacion {
     private Sorteo aut_sorteo_id;
 
     @OneToMany(mappedBy = "aut_asignacion_id")
-    private Asignacion asignacion;
+    private List<Solicitud_reemplazo> solcitudReemplazoList;
 }

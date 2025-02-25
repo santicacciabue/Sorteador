@@ -1,4 +1,4 @@
-package main.java.com.sorteador.sorteador.controllers;
+package com.sorteador.sorteador.controllers;
 
 
 

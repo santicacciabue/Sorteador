@@ -1,5 +1,7 @@
 package com.sorteador.sorteador.model;
 
+import java.util.List;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -45,6 +47,6 @@ public class Rel_producto {
     private Categoria aut_categoria_id;
 
     @OneToMany(mappedBy = "aut_rel_producto_id")
-    private Rel_producto rel_producto;
+    private List<Sorteo> sorteoList;
     
 }

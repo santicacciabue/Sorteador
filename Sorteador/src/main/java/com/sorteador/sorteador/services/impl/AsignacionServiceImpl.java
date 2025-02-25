@@ -1,9 +1,13 @@
-package main.java.com.sorteador.sorteador.services.impl;
+package com.sorteador.sorteador.services.impl;
 
+import java.util.List;
 import java.util.Optional;
+
+import org.springframework.stereotype.Service;
 
 import com.sorteador.sorteador.model.Asignacion;
 import com.sorteador.sorteador.repositories.AsignacionRepository;
+import com.sorteador.sorteador.services.AsignacionService;
 
 @Service
 public class AsignacionServiceImpl implements AsignacionService {
@@ -25,7 +29,7 @@ public class AsignacionServiceImpl implements AsignacionService {
         return asignacionRepository.save(asignacion);
     }
 
-    public Asignacion borrarAsignacion(int id){
-        return asignacionRepository.deleteById(id);
+    public void borrarAsignacion(int id){
+        asignacionRepository.deleteById(id);
     }
 }

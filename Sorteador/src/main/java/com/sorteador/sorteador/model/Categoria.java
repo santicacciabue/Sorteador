@@ -8,6 +8,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import java.time.LocalDate;
+import java.util.List;
 
 @Entity
 @Table(name = "aut_categoria")
@@ -62,5 +63,12 @@ public class Categoria {
     }
     
     @OneToMany(mappedBy = "aut_categoria_id")
-    private Categoria categoria;
+    private List<Categoria_tope> categoriaTopeList;
+
+    @OneToMany(mappedBy = "aut_categoria_id")
+    private List<Grupo> grupoList;
+
+    @OneToMany(mappedBy = "aut_categoria_id")
+    private List<Rel_producto> relProductoList;
+    
 }

@@ -1,5 +1,7 @@
 package com.sorteador.sorteador.model;
 
+import java.util.List;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -57,7 +59,7 @@ public class Integrante {
     private Grupo aut_grupo_id;
 
     @OneToMany(mappedBy = "aut_integrante_id")
-    private Integrante integrante;
+    private List<Solicitud_reemplazo> solicitudReemplazoList;
 
     
 }

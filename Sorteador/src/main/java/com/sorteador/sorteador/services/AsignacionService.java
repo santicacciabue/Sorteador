@@ -1,4 +1,9 @@
-package main.java.com.sorteador.sorteador.services;
+package com.sorteador.sorteador.services;
+
+import java.util.List;
+import java.util.Optional;
+
+import com.sorteador.sorteador.model.Asignacion;
 
 public interface AsignacionService {
     List<Asignacion> listarAsignaciones();
