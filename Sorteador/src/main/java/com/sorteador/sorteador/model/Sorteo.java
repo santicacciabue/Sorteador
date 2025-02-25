@@ -1,7 +1,6 @@
 package com.sorteador.sorteador.model;
 
 import java.time.LocalDate;
-import java.util.List;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -60,5 +59,5 @@ public class Sorteo {
     private Rel_producto aut_rel_producto_id;
 
     @OneToMany(mappedBy = "aut_sorteo_id")
-    private List<Asignacion> asignacionList;
+    private Sorteo sorteo;
 }

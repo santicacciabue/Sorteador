@@ -57,7 +57,5 @@ public class Integrante {
     private Grupo aut_grupo_id;
 
     @OneToMany(mappedBy = "aut_integrante_id")
-    private Integrante integrante;
-
-    
+    private List<Solicitud_reemplazo> solicitudReemplazoList;
 }

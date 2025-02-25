@@ -38,5 +38,5 @@ public class Asignacion {
     private Sorteo aut_sorteo_id;
 
     @OneToMany(mappedBy = "aut_asignacion_id")
-    private List<Solicitud_reemplazo> solicitudReemplazoList;
+    private Asignacion asignacion;
 }

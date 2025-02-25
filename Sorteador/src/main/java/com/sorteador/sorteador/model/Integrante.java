@@ -11,14 +11,15 @@ import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name = "aut_rel_producto")
-public class Rel_producto {
+@Table(name = "aut_integrante")
+public class Integrante {
+    
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    @Column (name = "nombre")
+    @Column(name = "nombre")
     private String nombre;
 
     public String getNombre() {
@@ -29,22 +30,34 @@ public class Rel_producto {
         this.nombre = nombre;
     }
 
-    @Column (name = "orden")
-    private int orden;
+    @Column(name = "legajo")
+    private int legajo;
 
-    public int getOrden() {
-        return this.orden;
+    public int getLegajo() {
+        return this.legajo;
     }
 
-    public void setOrden(int orden) {
-        this.orden = orden;
+    public void setLegajo(int legajo) {
+        this.legajo = legajo;
+    }
+
+    @Column(name = "rol") // ENUM
+    private String rol;
+
+    public String getRol() {
+        return this.rol;
+    }
+
+    public void setRol(String rol) {
+        this.rol = rol;
     }
 
     @ManyToOne
-    @JoinColumn(name = "aut_categoria_id")
-    private Categoria aut_categoria_id;
+    @JoinColumn(name = "aut_grupo_id")
+    private Grupo aut_grupo_id;
 
-    @OneToMany(mappedBy = "aut_rel_producto_id")
-    private List<Sorteo> sorteoList;
+    @OneToMany(mappedBy = "aut_integrante_id")
+    private Integrante integrante;
+
     
 }

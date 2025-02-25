@@ -45,6 +45,6 @@ public class Rel_producto {
     private Categoria aut_categoria_id;
 
     @OneToMany(mappedBy = "aut_rel_producto_id")
-    private List<Sorteo> sorteoList;
+    private Rel_producto rel_producto;
     
 }

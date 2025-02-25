@@ -45,5 +45,5 @@ public class Grupo {
     private Categoria aut_categoria_id;
 
     @OneToMany(mappedBy = "aut_grupo_id")
-    private Grupo grupo;
+    private List<Asignacion> asignacionList;
 }

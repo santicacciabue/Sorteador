@@ -62,11 +62,5 @@ public class Categoria {
     }
     
     @OneToMany(mappedBy = "aut_categoria_id")
-    private List<Categoria_tope> categoriaTopeList;
-
-    @OneToMany(mappedBy = "aut_categoria_id")
-    private List<Grupo> grupoList;
-
-    @OneToMany(mappedBy = "aut_categoria_id")
-    private List<Rel_producto> relProductoList;
+    private Categoria categoria;
 }
