@@ -16,19 +16,22 @@ public class AsignacionServiceImpl implements AsignacionService {
     public AsignacionServiceImpl (AsignacionRepository asignacionRepository){
         this.asignacionRepository = asignacionRepository;
     }
-
+    @Override
     public List<Asignacion> listarAsignaciones(){
         return (List<Asignacion>)this.asignacionRepository.findAll();
     }
 
+    @Override
     public Optional<Asignacion> listarAsignacionId (int id){
         return this.asignacionRepository.findById(id);
     }
 
+    @Override
     public Asignacion agregarAsignacion(Asignacion asignacion){
         return asignacionRepository.save(asignacion);
     }
 
+    @Override
     public void borrarAsignacion(int id){
         asignacionRepository.deleteById(id);
     }
