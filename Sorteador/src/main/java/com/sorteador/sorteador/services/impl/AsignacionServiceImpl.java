@@ -32,7 +32,20 @@ public class AsignacionServiceImpl implements AsignacionService {
     }
 
     @Override
-    public void borrarAsignacion(int id){
-        asignacionRepository.deleteById(id);
+    public Asignacion modificarAsignacion(int id, Asignacion asignacionModificada){
+        Asignacion asignacionExistente = asignacionRepository.findById(id).orElse(null);
+
+        if(asignacionExistente == null){
+            throw new RuntimeException("La Asignacion con ID " + id + " no existe.");
+        }
+
+        asignacionExistente.setEstado(asignacionModificada.getEstado());
+
+        return asignacionRepository.save(asignacionExistente);
     }
+
+    // @Override
+    // public void borrarAsignacion(int id){
+    //     asignacionRepository.deleteById(id);
+    // }
 }

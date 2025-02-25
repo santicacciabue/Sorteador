@@ -9,5 +9,6 @@ public interface AsignacionService {
     List<Asignacion> listarAsignaciones();
     Optional<Asignacion> listarAsignacionId(int id);
     Asignacion agregarAsignacion(Asignacion asignacion);
-    void borrarAsignacion(int id);
+    Asignacion modificarAsignacion(int id, Asignacion asignacionModificada);
+    //void borrarAsignacion(int id);
 }

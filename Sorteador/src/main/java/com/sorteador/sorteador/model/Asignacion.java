@@ -39,6 +39,9 @@ public class Asignacion {
     @JoinColumn(name = "aut_sorteo_id")
     private Sorteo aut_sorteo_id;
 
-    @OneToMany(mappedBy = "aut_asignacion_id")
+    @OneToMany(mappedBy = "aut_asignacion_reemplazo_id")
     private List<Solicitud_reemplazo> solcitudReemplazoList;
+
+    @OneToMany(mappedBy = "aut_asignacion_solicitante_id")
+    private List<Solicitud_reemplazo> solcitudSolicitanteList;
 }

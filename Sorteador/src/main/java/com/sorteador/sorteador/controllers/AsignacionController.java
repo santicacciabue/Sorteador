@@ -3,6 +3,10 @@ package com.sorteador.sorteador.controllers;
 
 import com.sorteador.sorteador.model.Asignacion;
 import com.sorteador.sorteador.services.AsignacionService;
+
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -11,6 +15,11 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.util.List;
 import java.util.Optional;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.PutMapping;
+
+
 
 @RestController
 @RequestMapping("/api/asignacion")
@@ -26,7 +35,7 @@ public class AsignacionController {
         return asignacionService.listarAsignaciones();
     }
 
-    @GetMapping("/listar/${id}")
+    @GetMapping("/listar/{id}")
     public Object obtenerAsignacionId(@PathVariable int id, RedirectAttributes redirect){
         Optional<Asignacion> asignacionOptional = asignacionService.listarAsignacionId(id);
         if(asignacionOptional.isPresent()) {
@@ -40,8 +49,22 @@ public class AsignacionController {
         }
     }
 
-
-
-
+    @PostMapping("/agregar")
+    public ResponseEntity<Asignacion>agregarAsignacion(@RequestBody Asignacion asignacion) {
+        Asignacion nuevaAsignacion = asignacionService.agregarAsignacion(asignacion);
+        return new ResponseEntity<>(nuevaAsignacion, HttpStatus.CREATED);
+    }
+    
+    @PutMapping("/modificar/{id}")
+    public ResponseEntity<?> modificarAsignacion(@PathVariable Integer id, @RequestBody Asignacion asignacionModificada) {
+        try {
+            Asignacion asignacion = asignacionService.modificarAsignacion(id, asignacionModificada);
+            return ResponseEntity.ok(asignacion);
+            
+        } catch (RuntimeException e) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Error: " + e.getMessage());
+        }
+       
+    }
 
 }

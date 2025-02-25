@@ -58,8 +58,10 @@ public class Integrante {
     @JoinColumn(name = "aut_grupo_id")
     private Grupo aut_grupo_id;
 
-    @OneToMany(mappedBy = "aut_integrante_id")
+    @OneToMany(mappedBy = "aut_integrante_reemplazo_id")
     private List<Solicitud_reemplazo> solicitudReemplazoList;
 
+    @OneToMany(mappedBy = "aut_integrante_solicitante_id")
+    private List<Solicitud_reemplazo> solicitudSolicitanteList;
     
 }

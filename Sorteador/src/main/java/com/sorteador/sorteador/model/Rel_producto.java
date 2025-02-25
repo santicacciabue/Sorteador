@@ -43,7 +43,7 @@ public class Rel_producto {
     }
 
     @ManyToOne
-    @JoinColumn(name = "aut_categoria_id")
+    @JoinColumn(name = "aut_categorias_id")
     private Categoria aut_categoria_id;
 
     @OneToMany(mappedBy = "aut_rel_producto_id")

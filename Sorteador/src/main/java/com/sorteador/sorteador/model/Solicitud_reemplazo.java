@@ -66,19 +66,19 @@ public class Solicitud_reemplazo {
 	}
 
     @ManyToOne
-    @JoinColumn(name = "aut_integrante_id")
+    @JoinColumn(name = "aut_empleado_solicitante")
     private Integrante aut_integrante_solicitante_id;
 
     @ManyToOne
-    @JoinColumn(name = "aut_integrante_id")
+    @JoinColumn(name = "aut_empleado_reemplazo")
     private Integrante aut_integrante_reemplazo_id;
 
     @ManyToOne
-    @JoinColumn(name = "aut_asignacion_id")
+    @JoinColumn(name = "aut_asignacion_solicitante")
     private Asignacion aut_asignacion_solicitante_id;
 
     @ManyToOne
-    @JoinColumn(name = "aut_asignacion_id")
+    @JoinColumn(name = "aut_asignacion_reemplazo")
     private Asignacion aut_asignacion_reemplazo_id;
 
 }
