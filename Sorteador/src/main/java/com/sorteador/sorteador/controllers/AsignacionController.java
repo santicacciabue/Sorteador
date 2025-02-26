@@ -41,7 +41,7 @@ public class AsignacionController {
         if(asignacionOptional.isPresent()) {
             return asignacionService.listarAsignacionId(id);
         }else{
-            redirect.addFlashAttribute("error", "El usuario con id " +
+            redirect.addFlashAttribute("error", "La asignacion con id " +
                     id +
                     " no existe en la base de datos!");
 
