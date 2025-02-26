@@ -45,7 +45,7 @@ public class AsignacionController {
                     id +
                     " no existe en la base de datos!");
 
-            return "redirect:/listar";
+            return "redirect:/api/asignacion";
         }
     }
 
@@ -73,10 +73,10 @@ public class AsignacionController {
         if(optionalAsignacion.isPresent()){
             redirect.addFlashAttribute("success", "La asignacion se ha eliminado con exito!");
             asignacionService.borrarAsignacion(id);
-            return "redirect:/listar";
+            return "redirect:/api/asignacion";
         }
         redirect.addFlashAttribute("error", "Error la asignacion no existe en el sistema");
-        return "redirect:/listar";
+        return "redirect:/api/asignacion";
     }
 
 }
