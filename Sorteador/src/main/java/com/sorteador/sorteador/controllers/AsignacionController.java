@@ -45,7 +45,7 @@ public class AsignacionController {
                     id +
                     " no existe en la base de datos!");
 
-            return "redirect:/users";
+            return "redirect:/listar";
         }
     }
 
@@ -67,4 +67,39 @@ public class AsignacionController {
        
     }
 
+    @GetMapping("/delete/{id}")
+    public String borrarAsignacion(@PathVariable int id, RedirectAttributes redirect){
+        Optional<Asignacion> optionalAsignacion = asignacionService.listarAsignacionId(id);
+        if(optionalAsignacion.isPresent()){
+            redirect.addFlashAttribute("success", "La asignacion se ha eliminado con exito!");
+            asignacionService.borrarAsignacion(id);
+            return "redirect:/listar";
+        }
+        redirect.addFlashAttribute("error", "Error la asignacion no existe en el sistema");
+        return "redirect:/listar";
+    }
+
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
