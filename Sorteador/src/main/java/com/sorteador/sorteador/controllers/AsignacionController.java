@@ -6,7 +6,6 @@ import com.sorteador.sorteador.services.AsignacionService;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -67,17 +66,17 @@ public class AsignacionController {
        
     }
 
-    @GetMapping("/delete/{id}")
-    public String borrarAsignacion(@PathVariable int id, RedirectAttributes redirect){
-        Optional<Asignacion> optionalAsignacion = asignacionService.listarAsignacionId(id);
-        if(optionalAsignacion.isPresent()){
-            redirect.addFlashAttribute("success", "La asignacion se ha eliminado con exito!");
-            asignacionService.borrarAsignacion(id);
-            return "redirect:/api/asignacion";
-        }
-        redirect.addFlashAttribute("error", "Error la asignacion no existe en el sistema");
-        return "redirect:/api/asignacion";
-    }
+    // @GetMapping("/delete/{id}")
+    // public String borrarAsignacion(@PathVariable int id, RedirectAttributes redirect){
+    //     Optional<Asignacion> optionalAsignacion = asignacionService.listarAsignacionId(id);
+    //     if(optionalAsignacion.isPresent()){
+    //         redirect.addFlashAttribute("success", "La asignacion se ha eliminado con exito!");
+    //         asignacionService.borrarAsignacion(id);
+    //         return "redirect:/api/asignacion";
+    //     }
+    //     redirect.addFlashAttribute("error", "Error la asignacion no existe en el sistema");
+    //     return "redirect:/api/asignacion";
+    // }
 
 }
 

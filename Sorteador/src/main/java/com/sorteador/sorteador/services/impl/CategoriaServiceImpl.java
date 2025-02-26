@@ -13,28 +13,53 @@ import java.util.Optional;
 public class CategoriaServiceImpl implements CategoriaService {
     private final CategoriaRepository categoriaRepository;
 
+    //CONSTRUCTOR
     public CategoriaServiceImpl(CategoriaRepository categoriaRepository){
         this.categoriaRepository = categoriaRepository;
     }
 
+    
+    /** 
+     * @return List<Categoria>
+     * LISTAR CATEGORIAS
+     */
     @Transactional(readOnly = true)
     @Override
     public List<Categoria> listarCategorias() {
         return (List<Categoria>)this.categoriaRepository.findAll();
     }
 
+    
+    /** 
+     * @param id
+     * @return Optional<Categoria>
+     * LISTAR CATEGORIA POR ID
+     */
     @Transactional(readOnly = true)
     @Override
     public Optional<Categoria> listarCategoriaId(int id) {
         return this.categoriaRepository.findById(id);
     }
 
+    
+    /** 
+     * @param categoria
+     * @return Categoria
+     * AGREGAR CATEGORIA
+     */
     @Transactional
     @Override
     public Categoria agregarCategoria(Categoria categoria) {
         return categoriaRepository.save(categoria);
     }
 
+    
+    /** 
+     * @param id
+     * @param categoriaModificada
+     * @return Categoria
+     * MODIFICAR CATEGORIA
+     */
     @Transactional
     @Override
     public Categoria modificarCategoria(int id, Categoria categoriaModificada) {

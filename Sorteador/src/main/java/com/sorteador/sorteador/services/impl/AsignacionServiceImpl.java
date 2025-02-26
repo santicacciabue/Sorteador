@@ -14,27 +14,53 @@ import org.springframework.transaction.annotation.Transactional;
 public class AsignacionServiceImpl implements AsignacionService {
     private final AsignacionRepository asignacionRepository;
 
+    //CONSTRUCTOR
     public AsignacionServiceImpl (AsignacionRepository asignacionRepository){
         this.asignacionRepository = asignacionRepository;
     }
+    
+    
+    /** 
+     * @return List<Asignacion>
+     * LISTAR ASIGNACIONES
+     */
     @Transactional(readOnly = true)
     @Override
     public List<Asignacion> listarAsignaciones(){
         return (List<Asignacion>)this.asignacionRepository.findAll();
     }
 
+    
+    /** 
+     * @param id
+     * @return Optional<Asignacion>
+     * LISTAR ASIGNACION POR ID
+     */
     @Transactional(readOnly = true)
     @Override
     public Optional<Asignacion> listarAsignacionId (int id){
         return this.asignacionRepository.findById(id);
     }
 
+    
+    /** 
+     * @param asignacion
+     * @return Asignacion
+     * AGREGAR ASIGNACION
+     */
     @Transactional
     @Override
     public Asignacion agregarAsignacion(Asignacion asignacion){
         return asignacionRepository.save(asignacion);
     }
 
+    
+    /** 
+     * @param id
+     * @param asignacionModificada
+     * @return Asignacion
+     * MODIFICAR ASIGNACION
+     */
     @Transactional
     @Override
     public Asignacion modificarAsignacion(int id, Asignacion asignacionModificada){
@@ -49,9 +75,9 @@ public class AsignacionServiceImpl implements AsignacionService {
         return asignacionRepository.save(asignacionExistente);
     }
 
-    @Transactional
-    @Override
-     public void borrarAsignacion(int id){
-         asignacionRepository.deleteById(id);
-     }
+    // @Transactional
+    // @Override
+    //  public void borrarAsignacion(int id){
+    //      asignacionRepository.deleteById(id);
+    //  }
 }

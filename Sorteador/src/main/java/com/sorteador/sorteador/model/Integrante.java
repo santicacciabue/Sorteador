@@ -58,6 +58,14 @@ public class Integrante {
     @JoinColumn(name = "aut_grupo_id")
     private Grupo aut_grupo_id;
 
+    public Grupo getGrupo(){
+        return this.aut_grupo_id;
+    }
+
+    public void setGrupo(Grupo grupo){
+        this.aut_grupo_id = grupo;
+    }
+
     @OneToMany(mappedBy = "aut_integrante_reemplazo_id")
     private List<Solicitud_reemplazo> solicitudReemplazoList;
 
