@@ -8,7 +8,7 @@ import com.sorteador.sorteador.model.Integrante;
 public interface IntegranteService {
     List<Integrante> listarIntegrantes();
     Optional<Integrante> listarIntegranteId(int id);
-    Integrante agregIntegrante(Integrante integrante);
+    Integrante agregarIntegrante(Integrante integrante);
     Integrante modificarIntegrante(int id, Integrante integranteModificado);
     Integrante modificarGrupoIntegrante(int idIntegrante, int grupoNuevoId);
 }

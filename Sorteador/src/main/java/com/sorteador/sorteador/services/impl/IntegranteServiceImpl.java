@@ -52,7 +52,7 @@ public class IntegranteServiceImpl implements IntegranteService {
      */
     @Transactional
     @Override
-    public Integrante agregIntegrante(Integrante integrante){
+    public Integrante agregarIntegrante(Integrante integrante){
         return integranteRepository.save(integrante);
     }
 

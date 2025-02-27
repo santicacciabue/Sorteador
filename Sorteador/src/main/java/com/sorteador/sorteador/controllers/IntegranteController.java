@@ -48,7 +48,7 @@ public class IntegranteController {
 
     @PostMapping("/agregar")
     public ResponseEntity<Integrante>agregarIntegrante(@RequestBody Integrante integrante) {
-        Integrante nuevoIntegrante = integranteService.agregIntegrante(integrante);
+        Integrante nuevoIntegrante = integranteService.agregarIntegrante(integrante);
         return new ResponseEntity<>(nuevoIntegrante,HttpStatus.CREATED);
     }
 
