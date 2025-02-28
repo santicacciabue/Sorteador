@@ -53,6 +53,15 @@ public class IntegranteServiceImpl implements IntegranteService {
     @Transactional
     @Override
     public Integrante agregarIntegrante(Integrante integrante){
+        if(integrante.getGrupo() != null && integrante.getGrupo().getId() != 0){
+            Optional<Grupo> grupoOptional = grupoRepository.findById(integrante.getGrupo().getId());
+            if(grupoOptional.isPresent()){
+                integrante.setGrupo(grupoOptional.get());
+            }
+            else{
+                throw new RuntimeException("Grupo no encontrado con id: "+ integrante.getGrupo().getId());
+            }
+        }
         return integranteRepository.save(integrante);
     }
 
@@ -84,7 +93,7 @@ public class IntegranteServiceImpl implements IntegranteService {
         Integrante integrante = integranteRepository.findById(idIntegrante)
             .orElseThrow(()-> new RuntimeException("Integrante no encontrado"));
 
-        Grupo nuevoGrupo = grupoRepository.findById(grupoNuevoId)  //MODIFICAR AL CREAR SERVICIO DE GRUPO..... !!!!!!!!!!
+        Grupo nuevoGrupo = grupoRepository.findById(grupoNuevoId) 
             .orElseThrow(()-> new RuntimeException("Grupo no encontrado"));
 
         integrante.setGrupo(nuevoGrupo);

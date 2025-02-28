@@ -20,6 +20,10 @@ public class Asignacion {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
+    public int getId() {
+        return id;
+    }
+
     @Column(name = "estado")
     private boolean estado;
 
@@ -35,9 +39,25 @@ public class Asignacion {
     @JoinColumn(name = "aut_grupo_id")
     private Grupo aut_grupo_id;
 
+    public Grupo getGrupo() {
+        return aut_grupo_id;
+    }
+
+    public Sorteo getSorteo() {
+        return aut_sorteo_id;
+    }
+
     @ManyToOne
     @JoinColumn(name = "aut_sorteo_id")
     private Sorteo aut_sorteo_id;
+
+    public void setGrupo(Grupo grupo) {
+        this.aut_grupo_id = grupo;
+    }
+
+    public void setSorteo(Sorteo sorteo) {
+        this.aut_sorteo_id = sorteo;
+    }
 
     @OneToMany(mappedBy = "aut_asignacion_reemplazo_id")
     private List<Solicitud_reemplazo> solcitudReemplazoList;

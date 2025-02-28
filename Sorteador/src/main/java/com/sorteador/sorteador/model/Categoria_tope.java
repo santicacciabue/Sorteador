@@ -18,6 +18,10 @@ public class Categoria_tope {
     @GeneratedValue (strategy = GenerationType.IDENTITY)
     private int id;
 
+    public int getId() {
+        return id;
+    }
+
     @Column(name = "cantidad_min")
     private int cantidad_min;
 

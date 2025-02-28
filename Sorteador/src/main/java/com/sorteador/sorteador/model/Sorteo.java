@@ -22,6 +22,10 @@ public class Sorteo {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
+    public int getId() {
+        return id;
+    }
+
     @Column(name = "fecha")
     private LocalDate fecha;
 

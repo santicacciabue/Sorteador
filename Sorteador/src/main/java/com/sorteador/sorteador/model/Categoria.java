@@ -18,6 +18,10 @@ public class Categoria {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     
+    public int getId() {
+        return id;
+    }
+
     @Column(name = "nombre")
     private String nombre;
 

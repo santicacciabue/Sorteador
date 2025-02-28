@@ -20,6 +20,10 @@ public class Rel_producto {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
+    public int getId() {
+        return id;
+    }
+
     @Column (name = "nombre")
     private String nombre;
 
@@ -45,6 +49,14 @@ public class Rel_producto {
     @ManyToOne
     @JoinColumn(name = "aut_categorias_id")
     private Categoria aut_categoria_id;
+
+    public void setCategoria(Categoria categoria){
+        this.aut_categoria_id = categoria;
+    }
+
+    public Categoria getCategoria(){
+        return this.aut_categoria_id;
+    }
 
     @OneToMany(mappedBy = "aut_rel_producto_id")
     private List<Sorteo> sorteoList;

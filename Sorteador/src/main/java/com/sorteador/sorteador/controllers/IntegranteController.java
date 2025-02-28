@@ -5,6 +5,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.sorteador.sorteador.model.Integrante;
+import com.sorteador.sorteador.services.GrupoService;
 import com.sorteador.sorteador.services.IntegranteService;
 
 import java.util.List;
@@ -26,7 +27,7 @@ import org.springframework.web.bind.annotation.PutMapping;
 public class IntegranteController {
     private final IntegranteService integranteService;
 
-    public IntegranteController(IntegranteService integranteService) {
+    public IntegranteController(IntegranteService integranteService, GrupoService grupoService) {
         this.integranteService = integranteService;
     }
 

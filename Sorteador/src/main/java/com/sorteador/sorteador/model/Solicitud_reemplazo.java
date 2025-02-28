@@ -20,6 +20,10 @@ public class Solicitud_reemplazo {
     private int id;
     
 
+    public int getId() {
+        return id;
+    }
+
     @Column(name = "nombre")
     private String nombre;
 
