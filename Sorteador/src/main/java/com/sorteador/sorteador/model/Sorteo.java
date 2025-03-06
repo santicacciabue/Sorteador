@@ -63,6 +63,14 @@ public class Sorteo {
     @JoinColumn(name = "aut_rel_producto_id")
     private Rel_producto aut_rel_producto_id;
 
+    public void setAut_rel_producto_id(Rel_producto aut_rel_producto_id) {
+        this.aut_rel_producto_id = aut_rel_producto_id;
+    }
+
+    public Rel_producto getAut_rel_producto_id() {
+        return aut_rel_producto_id;
+    }
+
     @OneToMany(mappedBy = "aut_sorteo_id")
     private List<Asignacion> asignacionList;
 }
