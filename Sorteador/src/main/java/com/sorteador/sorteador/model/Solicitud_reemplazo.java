@@ -73,11 +73,11 @@ public class Solicitud_reemplazo {
     @JoinColumn(name = "aut_empleado_solicitante")
     private Integrante aut_integrante_solicitante_id;
 
-    public Integrante getAut_integrante_solicitante_id() {
+    public Integrante getIntegranteSolicitante() {
         return aut_integrante_solicitante_id;
     }
 
-    public void setAut_integrante_solicitante_id(Integrante aut_integrante_solicitante_id) {
+    public void setIntegranteSolicitante(Integrante aut_integrante_solicitante_id) {
         this.aut_integrante_solicitante_id = aut_integrante_solicitante_id;
     }
 
@@ -85,11 +85,11 @@ public class Solicitud_reemplazo {
     @JoinColumn(name = "aut_empleado_reemplazo")
     private Integrante aut_integrante_reemplazo_id;
 
-    public Integrante getAut_integrante_reemplazo_id() {
+    public Integrante getIntegranteReemplazo() {
         return aut_integrante_reemplazo_id;
     }
 
-    public void setAut_integrante_reemplazo_id(Integrante aut_integrante_reemplazo_id) {
+    public void setIntegranteReemplazo(Integrante aut_integrante_reemplazo_id) {
         this.aut_integrante_reemplazo_id = aut_integrante_reemplazo_id;
     }
 
@@ -97,11 +97,11 @@ public class Solicitud_reemplazo {
     @JoinColumn(name = "aut_asignacion_solicitante")
     private Asignacion aut_asignacion_solicitante_id;
 
-    public Asignacion getAut_asignacion_solicitante_id() {
+    public Asignacion getAsignacionSolicitante() {
         return aut_asignacion_solicitante_id;
     }
 
-    public void setAut_asignacion_solicitante_id(Asignacion aut_asignacion_solicitante_id) {
+    public void setAsignacionSolicitante(Asignacion aut_asignacion_solicitante_id) {
         this.aut_asignacion_solicitante_id = aut_asignacion_solicitante_id;
     }
 
@@ -109,11 +109,11 @@ public class Solicitud_reemplazo {
     @JoinColumn(name = "aut_asignacion_reemplazo")
     private Asignacion aut_asignacion_reemplazo_id;
 
-    public Asignacion getAut_asignacion_reemplazo_id() {
+    public Asignacion getAsignacionReemplazo() {
         return aut_asignacion_reemplazo_id;
     }
 
-    public void setAut_asignacion_reemplazo_id(Asignacion aut_asignacion_reemplazo_id) {
+    public void setAsignacionReemplazo(Asignacion aut_asignacion_reemplazo_id) {
         this.aut_asignacion_reemplazo_id = aut_asignacion_reemplazo_id;
     }
 

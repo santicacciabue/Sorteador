@@ -58,7 +58,7 @@ public class IntegranteServiceImpl implements IntegranteService {
             if(grupoOptional.isPresent()){
                 integrante.setGrupo(grupoOptional.get());
             }
-            else{
+            else{ 
                 throw new RuntimeException("Grupo no encontrado con id: "+ integrante.getGrupo().getId());
             }
         }

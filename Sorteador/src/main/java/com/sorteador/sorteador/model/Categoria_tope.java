@@ -59,11 +59,11 @@ public class Categoria_tope {
     @JoinColumn(name = "aut_categoria_id")
     private Categoria aut_categoria_id;
 
-    public void setAut_categoria_id(Categoria aut_categoria_id) {
+    public void setCategoria(Categoria aut_categoria_id) {
         this.aut_categoria_id = aut_categoria_id;
     }
 
-    public Categoria getAut_categoria_id() {
+    public Categoria getCategoria() {
         return aut_categoria_id;
     }
 

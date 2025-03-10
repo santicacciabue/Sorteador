@@ -40,7 +40,7 @@ public class Sorteo {
     @Column(name = "confirmado")
     private boolean confirmado;
 
-    public boolean isConfirmado() {
+    public boolean getConfirmado() {
         return this.confirmado;
     }
 
@@ -63,11 +63,11 @@ public class Sorteo {
     @JoinColumn(name = "aut_rel_producto_id")
     private Rel_producto aut_rel_producto_id;
 
-    public void setAut_rel_producto_id(Rel_producto aut_rel_producto_id) {
+    public void setProducto(Rel_producto aut_rel_producto_id) {
         this.aut_rel_producto_id = aut_rel_producto_id;
     }
 
-    public Rel_producto getAut_rel_producto_id() {
+    public Rel_producto getProducto() {
         return aut_rel_producto_id;
     }
 
