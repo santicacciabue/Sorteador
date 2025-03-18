@@ -57,9 +57,10 @@ public class Categoria_topeServiceImpl implements Categoria_topeService {
         if(categoriaTopeExistente == null){
             throw new RuntimeException("La categoria con ID " + id + " no existe.");
         }
-        categoriaTopeExistente.setCantidad_max(categoria_topeModificada.getCantidad_max());
-        categoriaTopeExistente.setCantidad_min(categoria_topeModificada.getCantidad_min());
-        categoriaTopeExistente.setEs_autoridad(categoria_topeModificada.getEs_autoridad());
+        categoriaTopeExistente.setcantidadMinAutoridad(categoria_topeModificada.getcantidadMinAutoridad());
+        categoriaTopeExistente.setcantidadMaxAuxiliar(categoria_topeModificada.getcantidadMinAuxiliar());
+        categoriaTopeExistente.setcantidadMaxAutoridad(categoria_topeModificada.getcantidadMaxAutoridad());
+        categoriaTopeExistente.setcantidadMaxAuxiliar(categoria_topeModificada.getcantidadMaxAuxiliar());
 
         return categoriaTopeRepository.save(categoriaTopeExistente);
     }

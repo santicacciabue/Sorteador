@@ -48,14 +48,14 @@ public class Rel_producto {
 
     @ManyToOne
     @JoinColumn(name = "aut_categorias_id")
-    private Categoria aut_categoria_id;
+    private Categoria autCategoria;
 
     public void setCategoria(Categoria categoria){
-        this.aut_categoria_id = categoria;
+        this.autCategoria = categoria;
     }
 
     public Categoria getCategoria(){
-        return this.aut_categoria_id;
+        return this.autCategoria;
     }
 
     @OneToMany(mappedBy = "aut_rel_producto_id")

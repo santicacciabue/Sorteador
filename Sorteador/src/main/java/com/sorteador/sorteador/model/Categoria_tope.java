@@ -22,49 +22,60 @@ public class Categoria_tope {
         return id;
     }
 
-    @Column(name = "cantidad_min")
-    private int cantidad_min;
+    @Column(name = "cantidad_min_auxiliar")
+    private int cantidadMinAuxiliar;
 
-    public int getCantidad_min() {
-        return this.cantidad_min;
+    public int getcantidadMinAuxiliar() {
+        return this.cantidadMinAuxiliar;
     }
 
-    public void setCantidad_min(int cantidad_min) {
-        this.cantidad_min = cantidad_min;
+    public void setcantidadMinAuxiliar(int cantidadMinAuxiliar) {
+        this.cantidadMinAuxiliar = cantidadMinAuxiliar;
     }
 
-    @Column(name = "cantidad_max")
-    private int cantidad_max;
+    @Column(name = "cantidad_max_auxiliar")
+    private int cantidadMaxAuxiliar;
 
-    public int getCantidad_max() {
-        return this.cantidad_max;
+    public int getcantidadMaxAuxiliar() {
+        return this.cantidadMaxAuxiliar;
     }
 
-    public void setCantidad_max(int cantidad_max) {
-        this.cantidad_max = cantidad_max;
+    public void setcantidadMaxAuxiliar(int cantidadMaxAuxiliar) {
+        this.cantidadMaxAuxiliar = cantidadMaxAuxiliar;
     }
 
-    @Column(name = "es_autoridad")
-    private boolean es_autoridad;
+    @Column(name = "cantidad_min_autoridad")
+    private int cantidadMinAutoridad;
 
-    public boolean getEs_autoridad() {
-        return this.es_autoridad;
+    public int getcantidadMinAutoridad() {
+        return this.cantidadMinAutoridad;
     }
 
-    public void setEs_autoridad(boolean es_autoridad) {
-        this.es_autoridad = es_autoridad;
+    public void setcantidadMinAutoridad(int cantidadMinAutoridad) {
+        this.cantidadMinAutoridad = cantidadMinAutoridad;
+    }
+
+    @Column(name = "cantidad_max_autoridad")
+    private int cantidadMaxAutoridad;
+
+    public int getcantidadMaxAutoridad() {
+        return this.cantidadMaxAutoridad;
+    }
+
+    public void setcantidadMaxAutoridad(int cantidadMaxAutoridad) {
+        this.cantidadMaxAutoridad = cantidadMaxAutoridad;
     }
 
     @ManyToOne
     @JoinColumn(name = "aut_categoria_id")
-    private Categoria aut_categoria_id;
+    private Categoria autCategoria;
 
-    public void setCategoria(Categoria aut_categoria_id) {
-        this.aut_categoria_id = aut_categoria_id;
+    public void setCategoria(Categoria autCategoria) {
+        this.autCategoria = autCategoria;
     }
 
     public Categoria getCategoria() {
-        return aut_categoria_id;
+        return autCategoria;
     }
 
     

@@ -2,8 +2,10 @@ package com.sorteador.sorteador.model;
 
 import java.util.List;
 
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -58,16 +60,16 @@ public class Integrante {
         this.rol = rol;
     }
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "aut_grupo_id")
-    private Grupo aut_grupo_id;
+    private Grupo autGrupo;
 
     public Grupo getGrupo(){
-        return this.aut_grupo_id;
+        return this.autGrupo;
     }
 
     public void setGrupo(Grupo grupo){
-        this.aut_grupo_id = grupo;
+        this.autGrupo = grupo;
     }
 
     @OneToMany(mappedBy = "aut_integrante_reemplazo_id")

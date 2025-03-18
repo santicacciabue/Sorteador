@@ -66,13 +66,13 @@ public class Categoria {
         this.semanas_a_planificar = semanas_a_planificar;
     }
     
-    @OneToMany(mappedBy = "aut_categoria_id")
+    @OneToMany(mappedBy = "autCategoria")
     private List<Categoria_tope> categoriaTopeList;
 
-    @OneToMany(mappedBy = "aut_categoria_id")
+    @OneToMany(mappedBy = "autCategoria")
     private List<Grupo> grupoList;
 
-    @OneToMany(mappedBy = "aut_categoria_id")
+    @OneToMany(mappedBy = "autCategoria")
     private List<Rel_producto> relProductoList;
     
 }

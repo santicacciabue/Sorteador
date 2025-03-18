@@ -37,10 +37,10 @@ public class Asignacion {
 
     @ManyToOne
     @JoinColumn(name = "aut_grupo_id")
-    private Grupo aut_grupo_id;
+    private Grupo autGrupo;
 
     public Grupo getGrupo() {
-        return aut_grupo_id;
+        return autGrupo;
     }
 
     public Sorteo getSorteo() {
@@ -52,7 +52,7 @@ public class Asignacion {
     private Sorteo aut_sorteo_id;
 
     public void setGrupo(Grupo grupo) {
-        this.aut_grupo_id = grupo;
+        this.autGrupo = grupo;
     }
 
     public void setSorteo(Sorteo sorteo) {

@@ -48,16 +48,16 @@ public class Grupo {
 
     @ManyToOne
     @JoinColumn(name = "aut_categoria_id")
-    private Categoria aut_categoria_id;
+    private Categoria autCategoria;
 
     public void setCategoria(Categoria categoria) {
-        this.aut_categoria_id = categoria;
+        this.autCategoria = categoria;
     }
 
     public Categoria getCategoria() {
-        return aut_categoria_id;
+        return autCategoria;
     }
 
-    @OneToMany(mappedBy = "aut_grupo_id")
+    @OneToMany(mappedBy = "autGrupo")
     private List<Asignacion> asignacionList;
 }

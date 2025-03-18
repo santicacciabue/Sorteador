@@ -10,6 +10,9 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.util.List;
 import java.util.Optional;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+
 
 @RestController
 @RequestMapping("/api/categoria_tope")
@@ -51,4 +54,6 @@ public class Categoria_topeController {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Error: "+ e.getMessage());
         }
     }
+
+    
 }

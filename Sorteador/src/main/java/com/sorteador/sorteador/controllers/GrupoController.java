@@ -1,9 +1,12 @@
 package com.sorteador.sorteador.controllers;
 
+import com.sorteador.sorteador.exceptions.GroupExceededException;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.sorteador.sorteador.exceptions.EntityNotFoundException;
 import com.sorteador.sorteador.model.Grupo;
+import com.sorteador.sorteador.model.Integrante;
 import com.sorteador.sorteador.services.GrupoService;
 
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -63,6 +66,16 @@ public class GrupoController {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Error: "+e.getMessage());
         }
     
+    }
+    
+    @PostMapping("/agregar/{idIntegrante}/{idGrupo}")
+    public ResponseEntity<?> agregarIntegranteAGrupo(@PathVariable Integer idIntegrante,@PathVariable Integer idGrupo) throws EntityNotFoundException, GroupExceededException {
+        try {
+            Integrante integranteAgregado = grupoService.agregarIntegranteAGrupo(idIntegrante, idGrupo);
+            return ResponseEntity.ok(integranteAgregado);
+        } catch (RuntimeException e) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Error:"+e.getMessage());
+        }
     }
     
     
