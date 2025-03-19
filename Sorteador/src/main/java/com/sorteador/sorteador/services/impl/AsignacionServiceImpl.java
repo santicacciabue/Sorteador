@@ -3,6 +3,7 @@ package com.sorteador.sorteador.services.impl;
 import java.util.List;
 import java.util.Optional;
 
+import com.sorteador.sorteador.exceptions.EntityNotFoundException;
 import org.springframework.stereotype.Service;
 
 import com.sorteador.sorteador.model.Asignacion;
@@ -46,8 +47,14 @@ public class AsignacionServiceImpl implements AsignacionService {
      */
     @Transactional(readOnly = true)
     @Override
-    public Optional<Asignacion> listarAsignacionId (int id){
-        return this.asignacionRepository.findById(id);
+    public Optional<Asignacion> listarAsignacionId (int id) throws EntityNotFoundException{
+        Optional<Asignacion> asignacionOptional = this.asignacionRepository.findById(id);
+        if(asignacionOptional.isPresent()){
+            return this.asignacionRepository.findById(id);
+        }else{
+            throw new EntityNotFoundException("Asignacion con id "+id+" no encontrada.");
+        }
+
     }
 
     
@@ -58,7 +65,7 @@ public class AsignacionServiceImpl implements AsignacionService {
      */
     @Transactional
     @Override
-    public Asignacion agregarAsignacion(Asignacion asignacion){
+    public Asignacion agregarAsignacion(Asignacion asignacion) throws EntityNotFoundException{
         if(asignacion.getGrupo() != null && asignacion.getGrupo().getId() != 0){
             if(asignacion.getSorteo() != null && asignacion.getSorteo().getId() != 0){
                 Optional<Grupo> grupoOptional = this.grupoRepository.findById(asignacion.getGrupo().getId());
@@ -68,10 +75,10 @@ public class AsignacionServiceImpl implements AsignacionService {
                         asignacion.setGrupo(grupoOptional.get());
                         asignacion.setSorteo(sorteOptional.get());
                     }else{
-                        throw new RuntimeException("Sorteo no encontrado con id: "+asignacion.getSorteo().getId());
+                        throw new EntityNotFoundException("Sorteo no encontrado con id: "+asignacion.getSorteo().getId());
                     }
                 }else{
-                    throw new RuntimeException("Grupo no encontrado con id: "+asignacion.getGrupo().getId());
+                    throw new EntityNotFoundException("Grupo no encontrado con id: "+asignacion.getGrupo().getId());
                 }
             }
         }
@@ -87,11 +94,11 @@ public class AsignacionServiceImpl implements AsignacionService {
      */
     @Transactional
     @Override
-    public Asignacion modificarAsignacion(int id, Asignacion asignacionModificada){
+    public Asignacion modificarAsignacion(int id, Asignacion asignacionModificada) throws EntityNotFoundException {
         Asignacion asignacionExistente = asignacionRepository.findById(id).orElse(null);
 
         if(asignacionExistente == null){
-            throw new RuntimeException("La Asignacion con ID " + id + " no existe.");
+            throw new EntityNotFoundException("La Asignacion con ID " + id + " no existe.");
         }
 
         asignacionExistente.setEstado(asignacionModificada.getEstado());

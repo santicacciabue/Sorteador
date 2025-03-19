@@ -41,7 +41,7 @@ public class GrupoController {
     }
 
     @GetMapping("/listar/{id}")
-    public Object listarGrupoId(@PathVariable Integer id, RedirectAttributes redirect) {
+    public Object listarGrupoId(@PathVariable Integer id, RedirectAttributes redirect) throws EntityNotFoundException {
         Optional<Grupo> grupoOptional = grupoService.listarGrupoId(id);
         if(grupoOptional.isPresent()){
             return grupoService.listarGrupoId(id);
@@ -52,20 +52,19 @@ public class GrupoController {
     }
 
     @PostMapping("/agregar")
-    public ResponseEntity<Grupo> agregarGrupo(@RequestBody Grupo grupo) {
+    public ResponseEntity<Grupo> agregarGrupo(@RequestBody Grupo grupo) throws  EntityNotFoundException {
         Grupo nuevoGrupo = grupoService.agregarGrupo(grupo);
         return new ResponseEntity<>(nuevoGrupo,HttpStatus.CREATED);
     }
 
     @PutMapping("/modificar/{id}")
-    public ResponseEntity<?> modificarGrupo(@PathVariable Integer id, @RequestBody Grupo grupoModificado) {
+    public ResponseEntity<?> modificarGrupo(@PathVariable Integer id, @RequestBody Grupo grupoModificado) throws  EntityNotFoundException {
         try {
             Grupo grupo = grupoService.modificarGrupo(id, grupoModificado);
             return ResponseEntity.ok(grupo);
         } catch (RuntimeException e) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Error: "+e.getMessage());
         }
-    
     }
     
     @PostMapping("/agregar/{idIntegrante}/{idGrupo}")
@@ -77,8 +76,5 @@ public class GrupoController {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Error:"+e.getMessage());
         }
     }
-    
-    
-    
     
 }

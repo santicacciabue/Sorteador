@@ -41,19 +41,24 @@ public class GrupoServiceImpl implements GrupoService{
 
     @Transactional(readOnly = true)
     @Override
-    public Optional<Grupo> listarGrupoId(int id){
-        return this.grupoRepository.findById(id);
+    public Optional<Grupo> listarGrupoId(int id) throws EntityNotFoundException{
+        Optional<Grupo> grupoOptional = this.grupoRepository.findById(id);
+        if(grupoOptional.isPresent()){
+            return this.grupoRepository.findById(id);
+        }else{
+            throw new EntityNotFoundException("Grupo con id "+id+" no encontrado.");
+        }
     }
 
     @Transactional
     @Override
-    public Grupo agregarGrupo(Grupo grupo){
+    public Grupo agregarGrupo(Grupo grupo) throws  EntityNotFoundException{
         if(grupo.getCategoria() != null && grupo.getCategoria().getId() != 0){
             Optional<Categoria> categoriaOptional = this.categoriaRepository.findById(grupo.getCategoria().getId());
             if(categoriaOptional.isPresent()){
                 grupo.setCategoria(categoriaOptional.get());
             }else{
-                throw new RuntimeException("Categoria no encontrada con id: "+grupo.getCategoria().getId());
+                throw new EntityNotFoundException("Categoria no encontrada con id: "+grupo.getCategoria().getId());
             }
         }
         return grupoRepository.save(grupo);   
@@ -61,11 +66,11 @@ public class GrupoServiceImpl implements GrupoService{
 
     @Transactional
     @Override
-    public Grupo modificarGrupo(int id, Grupo grupoModificado){
+    public Grupo modificarGrupo(int id, Grupo grupoModificado) throws  EntityNotFoundException{
         Grupo grupoExistente = grupoRepository.findById(id).orElse(null);
 
         if(grupoExistente == null){
-            throw new RuntimeException("El grupo con el id "+id+" no existe.");
+            throw new EntityNotFoundException("El grupo con el id "+id+" no existe.");
         }
 
         grupoExistente.setNombre(grupoModificado.getNombre());

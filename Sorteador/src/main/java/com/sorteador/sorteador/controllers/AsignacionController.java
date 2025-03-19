@@ -1,6 +1,7 @@
 package com.sorteador.sorteador.controllers;
 
 
+import com.sorteador.sorteador.exceptions.EntityNotFoundException;
 import com.sorteador.sorteador.model.Asignacion;
 import com.sorteador.sorteador.services.AsignacionService;
 
@@ -35,7 +36,7 @@ public class AsignacionController {
     }
 
     @GetMapping("/listar/{id}")
-    public Object obtenerAsignacionId(@PathVariable int id, RedirectAttributes redirect){
+    public Object obtenerAsignacionId(@PathVariable int id, RedirectAttributes redirect) throws EntityNotFoundException {
         Optional<Asignacion> asignacionOptional = asignacionService.listarAsignacionId(id);
         if(asignacionOptional.isPresent()) {
             return asignacionService.listarAsignacionId(id);
@@ -49,13 +50,13 @@ public class AsignacionController {
     }
 
     @PostMapping("/agregar")
-    public ResponseEntity<Asignacion>agregarAsignacion(@RequestBody Asignacion asignacion) {
+    public ResponseEntity<Asignacion>agregarAsignacion(@RequestBody Asignacion asignacion) throws EntityNotFoundException{
         Asignacion nuevaAsignacion = asignacionService.agregarAsignacion(asignacion);
         return new ResponseEntity<>(nuevaAsignacion, HttpStatus.CREATED);
     }
     
     @PutMapping("/modificar/{id}")
-    public ResponseEntity<?> modificarAsignacion(@PathVariable Integer id, @RequestBody Asignacion asignacionModificada) {
+    public ResponseEntity<?> modificarAsignacion(@PathVariable Integer id, @RequestBody Asignacion asignacionModificada) throws EntityNotFoundException{
         try {
             Asignacion asignacion = asignacionService.modificarAsignacion(id, asignacionModificada);
             return ResponseEntity.ok(asignacion);

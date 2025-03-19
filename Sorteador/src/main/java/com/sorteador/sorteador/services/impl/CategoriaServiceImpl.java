@@ -49,8 +49,10 @@ public class CategoriaServiceImpl implements CategoriaService {
      */
     @Transactional
     @Override
-    public Categoria agregarCategoria(Categoria categoria) {
+    public Categoria agregarCategoria(Categoria categoria){
+
         return categoriaRepository.save(categoria);
+
     }
 
     
